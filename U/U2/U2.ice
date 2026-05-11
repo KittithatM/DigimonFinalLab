@@ -128,7 +128,7 @@
               ]
             },
             "params": [],
-            "code": "\nreg [31:0] Co;\nreg f = 0;\nreg [15:0] traget = 100 + ADC;\nreg [31:0] limit = 12e6 / (2 * traget);\n\nalways @(posedge Clk_i) begin\n    Co <= Co + 1;\n    if(Co >= limit - 1) begin\n        Co <= 0;\n        f <= ~f;\n    end\nend\nassign fq = f;"
+            "code": "\nreg [31:0] Co;\nreg f = 0;\n// reg [15:0] traget = 100 + ADC;\nreg [31:0] limit = 12000000 / (2 * (100 + ADC));\n\nalways @(posedge Clk_i) begin\n    Co <= Co + 1;\n    if(Co >= limit - 1) begin\n        Co <= 0;\n        f <= ~f;\n    end\nend\nassign fq = f;"
           },
           "position": {
             "x": 304,
