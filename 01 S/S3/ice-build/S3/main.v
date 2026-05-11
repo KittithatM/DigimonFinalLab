@@ -4,140 +4,150 @@
 
 //---- Top entity
 module main #(
- parameter vb35d0c = 115200
+ parameter vf18b71 = 2,
+ parameter vdaa8fc = 1,
+ parameter v8fa973 = 1
 ) (
- input [3:0] v169a21,
- input va5d540,
- output [3:0] v748a5a,
- output vbab60c
+ input v36c4c9,
+ input [3:0] vce8070,
+ output vad0250,
+ output v1f23df,
+ output v707aee,
+ output [3:0] vd7efb4,
+ output v7eb308
 );
- localparam p2 = vb35d0c;
- wire [0:3] w0;
- wire w1;
- wire [0:7] w3;
- wire w4;
- wire [0:3] w5;
- wire [0:3] w6;
+ localparam p1 = vf18b71;
+ localparam p2 = vdaa8fc;
+ localparam p4 = v8fa973;
+ wire w0;
+ wire w3;
+ wire w5;
+ wire [0:15] w6;
  wire w7;
  wire w8;
- assign v748a5a = w0;
- assign vbab60c = w1;
- assign w4 = va5d540;
- assign w5 = v169a21;
- assign w8 = va5d540;
- assign w8 = w4;
- vc6459c #(
-  .ved2ada(p2)
- ) vc7e5aa (
-  .v8caaa5(w1),
-  .v19b8dd(w3),
-  .v05e99b(w7),
-  .ve9a78f(w8)
+ wire w9;
+ wire w10;
+ wire w11;
+ wire w12;
+ wire [0:3] w13;
+ wire [0:3] w14;
+ wire [0:4] w15;
+ wire [0:4] w16;
+ wire w17;
+ wire w18;
+ wire w19;
+ assign v7eb308 = w3;
+ assign vad0250 = w5;
+ assign v1f23df = w8;
+ assign v707aee = w9;
+ assign w11 = v36c4c9;
+ assign w12 = v36c4c9;
+ assign w13 = vce8070;
+ assign vd7efb4 = w14;
+ assign w17 = v36c4c9;
+ assign w18 = v36c4c9;
+ assign w19 = v36c4c9;
+ assign w12 = w11;
+ assign w17 = w11;
+ assign w17 = w12;
+ assign w18 = w11;
+ assign w18 = w12;
+ assign w18 = w17;
+ assign w19 = w11;
+ assign w19 = w12;
+ assign w19 = w17;
+ assign w19 = w18;
+ main_v00cbaf v00cbaf (
+  .spi_c(w0),
+  .Beat(w3),
+  .DO(w6),
+  .xReset(w10),
+  .pad(w16)
  );
- v73122e vb20f4f (
-  .vdeb67e(w5),
-  .va8f67e(w6)
+ v519d31 #(
+  .vfb06ae(p1)
+ ) vcbc947 (
+  .v2a8434(w0),
+  .vac0eb2(w17)
  );
- main_vb78d31 vb78d31 (
-  .row(w0),
-  .Value(w3),
-  .Clk_i(w4),
-  .col(w6),
-  .txmit(w7)
+ v519d31 #(
+  .vfb06ae(p2)
+ ) v470045 (
+  .v2a8434(w7),
+  .vac0eb2(w18)
+ );
+ v304a60 #(
+  .v0d14f2(p4)
+ ) v52280d (
+  .vb22ec5(w5),
+  .vec3a19(w6),
+  .v292725(w7),
+  .v679af0(w8),
+  .v8b0a0c(w9),
+  .vd750c5(w19)
+ );
+ vc71757 v7c25ba (
+  .v2efea4(w10),
+  .v0daa9e(w11)
+ );
+ v023069 v2d6c45 (
+  .vb0e2f3(w12),
+  .vc8e351(w13),
+  .v8448df(w14),
+  .v500b0c(w15)
+ );
+ vf5ee8e v8c5c11 (
+  .vf8afa2(w15),
+  .ve04a8b(w16)
  );
 endmodule
 
 //---- Top entity
-module vc6459c #(
- parameter ved2ada = 115200
+module v519d31 #(
+ parameter vfb06ae = 100
 ) (
- input ve9a78f,
- input [7:0] v19b8dd,
- input v05e99b,
- output v8caaa5,
- output v2da441,
- output v01321e
+ input vac0eb2,
+ output v2a8434
 );
- localparam p1 = ved2ada;
+ localparam p2 = vfb06ae;
  wire w0;
- wire w2;
- wire [0:7] w3;
- wire w4;
- wire w5;
- wire w6;
- assign v8caaa5 = w0;
- assign w2 = ve9a78f;
- assign w3 = v19b8dd;
- assign w4 = v05e99b;
- assign v2da441 = w5;
- assign v01321e = w6;
- vc6459c_vedebcc #(
-  .BAUD(p1)
- ) vedebcc (
-  .TX(w0),
-  .clk(w2),
-  .data(w3),
-  .txmit(w4),
-  .busy(w5),
-  .done(w6)
+ wire w1;
+ assign v2a8434 = w0;
+ assign w1 = vac0eb2;
+ v519d31_v6cac2f #(
+  .MS(p2)
+ ) v6cac2f (
+  .o(w0),
+  .clk(w1)
  );
 endmodule
 
 //---------------------------------------------------
-//-- Serial-tx
+//-- Corazon-tic-ms
 //-- - - - - - - - - - - - - - - - - - - - - - - - --
-//-- Transmisor serie
+//-- Corazón de bombeo de tics a con periodo paramétrico de milisegundos
 //---------------------------------------------------
 
-module vc6459c_vedebcc #(
- parameter BAUD = 0
+module v519d31_v6cac2f #(
+ parameter MS = 0
 ) (
  input clk,
- input [7:0] data,
- input txmit,
- output TX,
- output busy,
- output done
+ output o
 );
- //-- Constantes para obtener las velocidades estándares
- `define B115200 104 
- `define B57600  208
- `define B38400  313
- `define B19200  625
- `define B9600   1250
- `define B4800   2500
- `define B2400   5000
- `define B1200   10000
- `define B600    20000
- `define B300    40000
+ //localparam MS;
  
- //-- Constante para calcular los baudios
- localparam BAUDRATE = (BAUD==115200) ? `B115200 : //-- OK
-                       (BAUD==57600)  ? `B57600  : //-- OK
-                       (BAUD==38400)  ? `B38400  : //-- Ok
-                       (BAUD==19200)  ? `B19200  : //-- OK
-                       (BAUD==9600)   ? `B9600   : //-- OK
-                       (BAUD==4800)   ? `B4800   : //-- OK 
-                       (BAUD==2400)   ? `B2400   : //-- OK
-                       (BAUD==1200)   ? `B1200   : //-- OK
-                       (BAUD==600)    ? `B600    : //-- OK
-                       (BAUD==300)    ? `B300    : //-- OK
-                       `B115200 ;  //-- Por defecto 115200 baudios
+ //-- Constante para dividir y obtener una frecuencia de 1KHz
+ localparam M = 12000*MS;
  
- 
- //---- GENERADOR DE BAUDIOS
- 
- //-- Calcular el numero dde bits para almacenar el divisor
- localparam N = $clog2(BAUDRATE);
- 
- //-- Contador para implementar el divisor
- //-- Es un contador modulo BAUDRATE
- reg [N-1:0] divcounter = 0;
+ //-- Calcular el numero de bits para almacenar M
+ localparam N = $clog2(M);
  
  //-- Cable de reset para el contador
- //-- Comparador que resetea el contador cuando se alcanza el tope
- //-- o cuando el estado del biestable es 0 (apagado)
- wire reset = ov_gen | (state == 0);
+ wire reset;
+ 
+ //-- Registro del divisor
+ reg [N-1:0] divcounter;
+ 
  
  //-- Contador con reset
  always @(posedge clk)
@@ -146,93 +156,1499 @@ module vc6459c_vedebcc #(
    else
      divcounter <= divcounter + 1;
  
- //-- Hemos llegado al final
- wire ov_gen = (divcounter == BAUDRATE-1);
+ //-- Comparador que resetea el contador cuando se alcanza el tope
+ assign reset = (divcounter == M-1);
+ 
+ //-- La salida es la señal de overflow
+ assign o = reset;
  
  
  
- //-- REGISTRO DESPLAZAMIENTO
  
- //-- Salida serie. Inicialmete a 1 (reposo) 
- reg TX = 1;
+endmodule
+//---- Top entity
+module v304a60 #(
+ parameter v0d14f2 = 1,
+ parameter vd9dee4 = 1
+) (
+ input vd750c5,
+ input va9e883,
+ input [15:0] vec3a19,
+ input v292725,
+ output vb22ec5,
+ output v679af0,
+ output v8b0a0c,
+ output [15:0] v71d699,
+ output vc56838,
+ output veb79b4
+);
+ localparam p12 = v0d14f2;
+ localparam p15 = vd9dee4;
+ wire [0:15] w0;
+ wire w1;
+ wire [0:15] w2;
+ wire [0:15] w3;
+ wire w4;
+ wire w5;
+ wire w6;
+ wire w7;
+ wire w8;
+ wire w9;
+ wire w10;
+ wire w11;
+ wire w13;
+ wire w14;
+ wire w16;
+ wire w17;
+ wire w18;
+ wire w19;
+ wire w20;
+ wire w21;
+ wire w22;
+ wire w23;
+ wire w24;
+ wire w25;
+ wire w26;
+ wire w27;
+ wire w28;
+ assign w0 = vec3a19;
+ assign vb22ec5 = w1;
+ assign v71d699 = w3;
+ assign w5 = va9e883;
+ assign w6 = vd750c5;
+ assign w7 = vd750c5;
+ assign vc56838 = w10;
+ assign w11 = v292725;
+ assign veb79b4 = w13;
+ assign v8b0a0c = w14;
+ assign w16 = vd750c5;
+ assign w17 = vd750c5;
+ assign w18 = vd750c5;
+ assign w19 = vd750c5;
+ assign w20 = vd750c5;
+ assign v679af0 = w21;
+ assign w23 = v292725;
+ assign w24 = v292725;
+ assign w7 = w6;
+ assign w16 = w6;
+ assign w16 = w7;
+ assign w17 = w6;
+ assign w17 = w7;
+ assign w17 = w16;
+ assign w18 = w6;
+ assign w18 = w7;
+ assign w18 = w16;
+ assign w18 = w17;
+ assign w19 = w6;
+ assign w19 = w7;
+ assign w19 = w16;
+ assign w19 = w17;
+ assign w19 = w18;
+ assign w20 = w6;
+ assign w20 = w7;
+ assign w20 = w16;
+ assign w20 = w17;
+ assign w20 = w18;
+ assign w20 = w19;
+ assign w23 = w11;
+ assign w24 = w11;
+ assign w24 = w23;
+ assign w27 = w26;
+ assign w28 = w26;
+ assign w28 = w27;
+ va7218f v8834d0 (
+  .v935503(w0),
+  .v0d3330(w1),
+  .v48e644(w2),
+  .v3ba3e6(w4),
+  .v4a6801(w16),
+  .v9bfaa9(w23),
+  .v7d29fb(w25)
+ );
+ v4159c6 v3444f0 (
+  .v8bdd71(w2),
+  .v123273(w3),
+  .v41eb95(w17),
+  .vf892a0(w26)
+ );
+ v45f630 vb10147 (
+  .ve8318d(w4),
+  .va4102a(w7),
+  .vbbc50c(w8),
+  .vf54559(w9),
+  .v9afc1f(w22)
+ );
+ v3bfe20 v08cea5 (
+  .ve7f5e6(w5),
+  .v717e81(w6),
+  .v3c12b5(w9)
+ );
+ v21cfcc v194363 (
+  .v9fb85f(w8)
+ );
+ v1c7dae v6ecd47 (
+  .ve8318d(w13),
+  .va4102a(w20),
+  .vf54559(w28)
+ );
+ vb959c2 #(
+  .v679341(p15)
+ ) v788109 (
+  .vb4c770(w14),
+  .v581b48(w18),
+  .v3c6908(w24),
+  .ve68648(w27)
+ );
+ v2edb74 #(
+  .v684e9b(p12)
+ ) v543bfd (
+  .vf2804a(w10),
+  .v8567d2(w11),
+  .ve91b66(w19),
+  .v38596d(w21),
+  .v2b4e0e(w22),
+  .v0fe16d(w25),
+  .v432f8e(w26)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- SPI_16_Master
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- SPI Master de 16 bits mode=0
+//---------------------------------------------------
+//---- Top entity
+module va7218f #(
+ parameter vc96e81 = 0
+) (
+ input v4a6801,
+ input v3ba3e6,
+ input [15:0] v935503,
+ input v9bfaa9,
+ input v7d29fb,
+ output v0d3330,
+ output [15:0] v48e644
+);
+ localparam p0 = vc96e81;
+ wire w1;
+ wire w2;
+ wire w3;
+ wire w4;
+ wire w5;
+ wire [0:15] w6;
+ wire [0:15] w7;
+ assign w1 = v4a6801;
+ assign w2 = v3ba3e6;
+ assign w3 = v7d29fb;
+ assign w4 = v9bfaa9;
+ assign v0d3330 = w5;
+ assign w6 = v935503;
+ assign v48e644 = w7;
+ va7218f_v768248 #(
+  .INI(p0)
+ ) v768248 (
+  .clk(w1),
+  .si(w2),
+  .shift(w3),
+  .load(w4),
+  .so(w5),
+  .d(w6),
+  .q(w7)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- Registro-desplazamiento
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Registro de desplazamiento (izquierda) de 8 bits
+//---------------------------------------------------
+
+module va7218f_v768248 #(
+ parameter INI = 0
+) (
+ input clk,
+ input si,
+ input [15:0] d,
+ input load,
+ input shift,
+ output so,
+ output [15:0] q
+);
+ //-- Numero de bits el registros de desplazamiento
+ localparam N = 16;
  
- //-- Registro de desplazamiento de 9 bits
- //-- Inicializado todo a 1s
- reg [8:0] q = 9'h1FF;
- 
- //-- La entrada de shift es la salida del generador de baudios
- wire shift = ov_gen;
+ reg [N-1:0] q = INI;
  
  always @(posedge clk)
-   if (txmit_tic)
-   //-- Carga del registro
-     q <= {data, 1'b0};
-     
+   if (load)
+     q <= d;
    else if (shift)
-     //-- Desplazamiento. Rellenar con 1 (bit de stop)
-     q <= {1'b1, q[8:1]};
+     q <= {q[N-2:0], si};
      
- //-- Sacar el bit de menor peso por serial-out    
- wire so;
- assign so = q[0];
+ //-- Sacar el bit de mayor peso por serial-out    
+ assign so = q[N-1];
+endmodule
+//---- Top entity
+module v4159c6 #(
+ parameter v422d28 = 0
+) (
+ input v41eb95,
+ input [15:0] v8bdd71,
+ input vf892a0,
+ output [15:0] v123273
+);
+ localparam p0 = v422d28;
+ wire w1;
+ wire w2;
+ wire [0:15] w3;
+ wire [0:15] w4;
+ assign w1 = vf892a0;
+ assign w2 = v41eb95;
+ assign w3 = v8bdd71;
+ assign v123273 = w4;
+ v4159c6_v9148cb #(
+  .INI(p0)
+ ) v9148cb (
+  .load(w1),
+  .clk(w2),
+  .d(w3),
+  .q(w4)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- Registro16bits
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Registro de 16 bits
+//---------------------------------------------------
+
+module v4159c6_v9148cb #(
+ parameter INI = 0
+) (
+ input clk,
+ input [15:0] d,
+ input load,
+ output [15:0] q
+);
+ localparam N = 16;
  
- //-- La salida tx la registramos
+ reg [N-1:0] q = INI;
+ 
  always @(posedge clk)
-   TX <= so;
+   if (load)
+     q <= d;
+endmodule
+//---- Top entity
+module v45f630 #(
+ parameter v71e305 = 0
+) (
+ input va4102a,
+ input vbbc50c,
+ input vf54559,
+ input v9afc1f,
+ output ve8318d
+);
+ localparam p2 = v71e305;
+ wire w0;
+ wire w1;
+ wire w3;
+ wire w4;
+ wire w5;
+ assign w0 = va4102a;
+ assign ve8318d = w1;
+ assign w3 = vf54559;
+ assign w4 = v9afc1f;
+ assign w5 = vbbc50c;
+ v45f630_vb8adf8 #(
+  .INI(p2)
+ ) vb8adf8 (
+  .clk(w0),
+  .q(w1),
+  .d(w3),
+  .load(w4),
+  .rst(w5)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- Biestable-D
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Biestable de datos (Tipo D). Cuando se recibe un tic por load se captura el dato
+//---------------------------------------------------
+
+module v45f630_vb8adf8 #(
+ parameter INI = 0
+) (
+ input clk,
+ input rst,
+ input d,
+ input load,
+ output q
+);
+ reg q = INI;
+ always @(posedge clk)
+   if (rst)
+     q <= INI;
+   else if (load)
+     q <= d;
+endmodule
+//---- Top entity
+module v3bfe20 (
+ input v717e81,
+ input ve7f5e6,
+ output v3c12b5
+);
+ wire w0;
+ wire w1;
+ wire w2;
+ assign w0 = ve7f5e6;
+ assign w1 = v717e81;
+ assign v3c12b5 = w2;
+ v3bfe20_v683a9f v683a9f (
+  .i(w0),
+  .clk(w1),
+  .o(w2)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- Sync
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Sincronizar las entradas de datos con el reloj del sistema
+//---------------------------------------------------
+
+module v3bfe20_v683a9f (
+ input clk,
+ input i,
+ output o
+);
+ // Sincronizacion. Evitar 
+ // problema de la metaestabilidad
+ 
+ reg d1;
+ reg d2;
+ 
+ always @(posedge clk)
+  d1 <= i;
+  
+ always @(posedge clk)
+   d2 <= d1;
    
- //-- La señal de entrada txmit se pasa por un 
- //-- detector de flancos de subida para generar un tic
- reg q_re = 0;
- wire txmit_tic;
+ assign o = d2;
+endmodule
+//---- Top entity
+module v21cfcc (
+ output v9fb85f
+);
+ wire w0;
+ assign v9fb85f = w0;
+ v21cfcc_vb2eccd vb2eccd (
+  .q(w0)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- 0
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Un bit constante a 0
+//---------------------------------------------------
+
+module v21cfcc_vb2eccd (
+ output q
+);
+ //-- Bit constante a 0
+ assign q = 1'b0;
+ 
+ 
+endmodule
+//---- Top entity
+module v1c7dae #(
+ parameter v71e305 = 0
+) (
+ input va4102a,
+ input vf54559,
+ output ve8318d
+);
+ localparam p2 = v71e305;
+ wire w0;
+ wire w1;
+ wire w3;
+ assign w0 = va4102a;
+ assign ve8318d = w1;
+ assign w3 = vf54559;
+ v1c7dae_vb8adf8 #(
+  .INI(p2)
+ ) vb8adf8 (
+  .clk(w0),
+  .q(w1),
+  .d(w3)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- Biestable-D
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Biestable de datos (Tipo D). Cuando se recibe un tic por load se captura el dato
+//---------------------------------------------------
+
+module v1c7dae_vb8adf8 #(
+ parameter INI = 0
+) (
+ input clk,
+ input d,
+ output q
+);
+ reg q = INI;
+ always @(posedge clk)
+   q <= d;
+endmodule
+//---- Top entity
+module vb959c2 #(
+ parameter v679341 = 0
+) (
+ input v581b48,
+ input ve68648,
+ input v3c6908,
+ output vb4c770
+);
+ localparam p4 = v679341;
+ wire w0;
+ wire w1;
+ wire w2;
+ wire w3;
+ assign w0 = v581b48;
+ assign w1 = ve68648;
+ assign w2 = v3c6908;
+ assign vb4c770 = w3;
+ vb959c2_v4e11b3 #(
+  .INI(p4)
+ ) v4e11b3 (
+  .clk(w0),
+  .set(w1),
+  .rst(w2),
+  .q(w3)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- Biestable-Set-Reset
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Biestable con entradas de Set y Reset síncronas, para poner y quitar notaficaciones de eventos
+//---------------------------------------------------
+
+module vb959c2_v4e11b3 #(
+ parameter INI = 0
+) (
+ input clk,
+ input set,
+ input rst,
+ output q
+);
+ reg q = INI;
  
  always @(posedge clk)
-   q_re <= txmit;
-   
- assign txmit_tic = (~q_re & txmit);  
- 
- 
- 
- //-- Estado de transmisor
- //-- 0: Parado
- //-- 1: Ocupado (transmitiendo)
- reg state = 0;
-   
+   if (set)
+     q <= 1'b1;
+   else if (rst)
+     q<=1'b0;
+endmodule
+//---- Top entity
+module v2edb74 #(
+ parameter v7b40c5 = 31,
+ parameter v684e9b = 1
+) (
+ input ve91b66,
+ input v8567d2,
+ output vf2804a,
+ output v38596d,
+ output v2b4e0e,
+ output v0fe16d,
+ output v432f8e
+);
+ localparam p4 = v7b40c5;
+ localparam p5 = v684e9b;
+ wire w0;
+ wire w1;
+ wire w2;
+ wire w3;
+ wire w6;
+ wire w7;
+ wire w8;
+ wire w9;
+ wire w10;
+ wire w11;
+ wire w12;
+ wire w13;
+ wire w14;
+ wire w15;
+ wire w16;
+ wire w17;
+ wire w18;
+ wire w19;
+ wire w20;
+ wire w21;
+ assign v38596d = w0;
+ assign v2b4e0e = w2;
+ assign v0fe16d = w3;
+ assign v432f8e = w10;
+ assign w11 = v8567d2;
+ assign vf2804a = w14;
+ assign w15 = ve91b66;
+ assign w16 = ve91b66;
+ assign w17 = ve91b66;
+ assign w18 = ve91b66;
+ assign w19 = ve91b66;
+ assign w20 = ve91b66;
+ assign w21 = ve91b66;
+ assign w1 = w0;
+ assign w8 = w7;
+ assign w16 = w15;
+ assign w17 = w15;
+ assign w17 = w16;
+ assign w18 = w15;
+ assign w18 = w16;
+ assign w18 = w17;
+ assign w19 = w15;
+ assign w19 = w16;
+ assign w19 = w17;
+ assign w19 = w18;
+ assign w20 = w15;
+ assign w20 = w16;
+ assign w20 = w17;
+ assign w20 = w18;
+ assign w20 = w19;
+ assign w21 = w15;
+ assign w21 = w16;
+ assign w21 = w17;
+ assign w21 = w18;
+ assign w21 = w19;
+ assign w21 = w20;
+ va20433 v612f86 (
+  .ve8318d(w0),
+  .vf54559(w8),
+  .va4102a(w16)
+ );
+ v5acad5 ve0d3c0 (
+  .ve78ab8(w1),
+  .v3487af(w2),
+  .vb1094d(w3),
+  .ved8395(w19)
+ );
+ vb05aa7 #(
+  .v9152e7(p5)
+ ) vc04a45 (
+  .v207fd0(w6),
+  .va9e2af(w7),
+  .v5688a8(w20)
+ );
+ v1c7dae v374268 (
+  .vf54559(w9),
+  .ve8318d(w10),
+  .va4102a(w21)
+ );
+ v1c7dae v915236 (
+  .vf54559(w11),
+  .ve8318d(w12),
+  .va4102a(w18)
+ );
+ v1c7dae vd8586a (
+  .vf54559(w13),
+  .ve8318d(w14),
+  .va4102a(w15)
+ );
+ v654318 #(
+  .vaceb8f(p4)
+ ) vdd77f4 (
+  .v69602e(w6),
+  .v87e8cb(w7),
+  .v8314fa(w9),
+  .vbdbcb4(w12),
+  .v680136(w13),
+  .v192615(w17)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- SPI-heart-2Mhz-div
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Señal de reloj de 16 pulsos, a 2MHZ / DIV (con divisor) 
+//---------------------------------------------------
+//---- Top entity
+module va20433 #(
+ parameter v71e305 = 0
+) (
+ input va4102a,
+ input vf54559,
+ output ve8318d
+);
+ localparam p3 = v71e305;
+ wire w0;
+ wire w1;
+ wire w2;
+ assign w0 = va4102a;
+ assign w1 = vf54559;
+ assign ve8318d = w2;
+ va20433_vb8adf8 #(
+  .INI(p3)
+ ) vb8adf8 (
+  .clk(w0),
+  .T(w1),
+  .q(w2)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- Biestable-T
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Biestable de cambio (Tipo T). Cuando se recibe un tic cambia de estado
+//---------------------------------------------------
+
+module va20433_vb8adf8 #(
+ parameter INI = 0
+) (
+ input clk,
+ input T,
+ output q
+);
+ reg q = INI;
  always @(posedge clk)
-   //-- Empieza la transmision: ocupado
-   if (txmit)
-     state <= 1'b1;
-     
-   //-- Acaba la transmision: libre    
-   else if (ov)
-     state <= 1'b0;
+   if (T)
+     q <= ~q;
+endmodule
+//---- Top entity
+module v5acad5 (
+ input ved8395,
+ input ve78ab8,
+ output v3487af,
+ output vb1094d
+);
+ wire w0;
+ wire w1;
+ wire w2;
+ wire w3;
+ wire w4;
+ wire w5;
+ wire w6;
+ wire w7;
+ wire w8;
+ wire w9;
+ assign w0 = ve78ab8;
+ assign w1 = ved8395;
+ assign w4 = ve78ab8;
+ assign v3487af = w5;
+ assign w6 = ve78ab8;
+ assign vb1094d = w9;
+ assign w4 = w0;
+ assign w6 = w0;
+ assign w6 = w4;
+ assign w7 = w2;
+ v1c7dae vbf8366 (
+  .vf54559(w0),
+  .va4102a(w1),
+  .ve8318d(w2)
+ );
+ v35f267 v5053a8 (
+  .v0e28cb(w2),
+  .vcbab45(w3)
+ );
+ vb2090f v758f4d (
+  .v0e28cb(w3),
+  .v3ca442(w4),
+  .vcbab45(w5)
+ );
+ v35f267 v592c9c (
+  .v0e28cb(w6),
+  .vcbab45(w8)
+ );
+ vb2090f vd35d8e (
+  .v0e28cb(w7),
+  .v3ca442(w8),
+  .vcbab45(w9)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- Detector-flancos
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Detector de flancos de subida y bajada. Emite tics por las salidas correspondientes al detecta los flancos. Versión bloques
+//---------------------------------------------------
+//---- Top entity
+module v35f267 (
+ input v0e28cb,
+ output vcbab45
+);
+ wire w0;
+ wire w1;
+ assign w0 = v0e28cb;
+ assign vcbab45 = w1;
+ v35f267_vd54ca1 vd54ca1 (
+  .a(w0),
+  .c(w1)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- NOT
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Puerta NOT
+//---------------------------------------------------
+
+module v35f267_vd54ca1 (
+ input a,
+ output c
+);
+ //-- Puerta NOT
  
- //-- Contador de bits enviados
- reg [3:0] bits = 0;
+ //-- module (input wire a, output wire c);
+ 
+ 
+ assign c = ~a;
+ 
+ 
+ //-- endmodule
+ 
+endmodule
+//---- Top entity
+module vb2090f (
+ input v0e28cb,
+ input v3ca442,
+ output vcbab45
+);
+ wire w0;
+ wire w1;
+ wire w2;
+ assign w0 = v0e28cb;
+ assign w1 = v3ca442;
+ assign vcbab45 = w2;
+ vb2090f_vf4938a vf4938a (
+  .a(w0),
+  .b(w1),
+  .c(w2)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- AND
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Puerta AND
+//---------------------------------------------------
+
+module vb2090f_vf4938a (
+ input a,
+ input b,
+ output c
+);
+ //-- Puerta AND
+ 
+ //-- module and (input wire a, input wire b,
+ //--             output wire c);
+ 
+ assign c = a & b;
+ 
+ //-- endmodule
+endmodule
+//---- Top entity
+module vb05aa7 #(
+ parameter v9152e7 = 1
+) (
+ input v5688a8,
+ input v207fd0,
+ output veabfb2,
+ output va9e2af
+);
+ localparam p4 = v9152e7;
+ wire w0;
+ wire w1;
+ wire w2;
+ wire w3;
+ assign veabfb2 = w0;
+ assign va9e2af = w1;
+ assign w2 = v5688a8;
+ assign w3 = v207fd0;
+ vb05aa7_v8b4ac8 #(
+  .DIV(p4)
+ ) v8b4ac8 (
+  .p(w0),
+  .tic(w1),
+  .clk(w2),
+  .start(w3)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- timer-system-spi
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Temporizador en tics. La señal p está activa durante los tics indicados. ov se emite un tic al finalizar
+//---------------------------------------------------
+
+module vb05aa7_v8b4ac8 #(
+ parameter DIV = 0
+) (
+ input clk,
+ input start,
+ output p,
+ output tic
+);
+ //--------------------------------------------
+ //-- Contador de tics
+ //--------------------------------------------
+ 
+ //-- Bloque timer-system especifico para usar
+ //-- con el SPI. Se combina en serie con una
+ //-- maquina de contar, de forma que con DIV=1
+ //-- se produce una señal de reloj de 2Mhz
+ //-- DIV=2  ---> 1Mhz
+ //-- DIV=4 ----> 500Khz
+ //-- DIV=5 ----> 250Khz
+ 
+ //-- Añadido con respecto al timer-system normal
+ localparam TICS = 3 * DIV -1;
+ 
+ //-- Calcular el numero de bits para almacenar US tics
+ localparam CB = $clog2(TICS);
+ 
+ reg [CB-1:0] counter = 0;
+ 
+ //-- Overflow del contador
+ wire ov;
+ 
+ //-- Señal de reset del contador
+ wire rst;
+ 
  always @(posedge clk)
-   //-- Si la cuenta ha terminado... volver a 0
-   if (ov)
-     bits <= 2'b00;
+   if (rst)
+     counter <= 0;
    else
-     if (shift)
-       bits <= bits + 1;
- 
- //-- Comprobar si se ha transmitido el último bit (overflow)
- //-- 1 bit de start + 8 bits de datos + 1 bit de stop
- wire ov = (bits == 10);
- 
- //-- La señal de ocupado es el estado del transmisor
- assign busy = state;
- 
- //-- La señal de done es la de overflow pero retrasada un
- //-- periodo de reloj del sistema y que el biestable 
- //-- llegue al estado de parado antes de que se 
- //-- empiece otra transmision
- 
- reg done=0;
+     counter <= counter + 1;
+       
+ //-- Comprobar overflow
+ assign ov = (counter == TICS-1);
+     
+ //---------------------------------------
+ //-- Biestable de estado del timer
+ //-- 0: Apagado  
+ //-- 1: Funcionando
+ reg q = 0;
  
  always @(posedge clk)
-   done <= ov;
+   if (start)
+     q <= 1'b1;
+   else if (rst)
+     q<=1'b0;
+     
+ //-- Lógica de reset
+ //En función de la entrada, el estado y  
+ // el overflow se inicializa el contador y 
+ // se habilita el corazón de tics
+ assign rst = ~q | ov | start;
  
+ //-- Salida de pulso
+ assign p = q;
+ 
+ //-- Salida de tic
+ //-- Saca un tic cuando ha finalizado la cuenta
+ assign tic = ov;
+     
+ 
+endmodule
+//---- Top entity
+module v654318 #(
+ parameter vaceb8f = 15,
+ parameter vc633fb = 1,
+ parameter vd99aad = 0
+) (
+ input v192615,
+ input vbdbcb4,
+ input v87e8cb,
+ output v680136,
+ output [4:0] v9047f4,
+ output v69602e,
+ output v8314fa
+);
+ localparam p0 = vd99aad;
+ localparam p1 = vc633fb;
+ localparam p6 = vaceb8f;
+ wire w2;
+ wire w3;
+ wire w4;
+ wire w5;
+ wire w7;
+ wire w8;
+ wire [0:4] w9;
+ wire [0:4] w10;
+ wire w11;
+ wire w12;
+ wire w13;
+ wire w14;
+ wire w15;
+ wire w16;
+ wire w17;
+ wire [0:4] w18;
+ wire [0:4] w19;
+ wire [0:4] w20;
+ wire w21;
+ wire w22;
+ wire w23;
+ wire w24;
+ wire w25;
+ wire w26;
+ assign w7 = vbdbcb4;
+ assign w8 = v87e8cb;
+ assign w11 = v192615;
+ assign w12 = v192615;
+ assign w13 = v192615;
+ assign v680136 = w14;
+ assign v9047f4 = w19;
+ assign v8314fa = w25;
+ assign v69602e = w26;
+ assign w12 = w11;
+ assign w13 = w11;
+ assign w13 = w12;
+ assign w15 = w14;
+ assign w16 = w14;
+ assign w16 = w15;
+ assign w19 = w18;
+ assign w20 = w18;
+ assign w20 = w19;
+ assign w23 = w5;
+ assign w24 = w5;
+ assign w24 = w23;
+ v438ded v37e36e (
+  .v143ae2(w7),
+  .v68780b(w12),
+  .v078fce(w14),
+  .v3525a9(w17),
+  .vf2d070(w21),
+  .vb414d8(w22),
+  .vd82121(w25)
+ );
+ v1c7dae vfd8fff (
+  .ve8318d(w4),
+  .va4102a(w13),
+  .vf54559(w24)
+ );
+ vb2090f v91590d (
+  .vcbab45(w5),
+  .v3ca442(w8),
+  .v0e28cb(w16)
+ );
+ vb2090f vffa799 (
+  .v3ca442(w2),
+  .v0e28cb(w5),
+  .vcbab45(w22)
+ );
+ vb2090f v234ec4 (
+  .vcbab45(w3),
+  .v3ca442(w4),
+  .v0e28cb(w15)
+ );
+ v816138 v1cb7f5 (
+  .v0e28cb(w3),
+  .v3ca442(w21),
+  .vcbab45(w26)
+ );
+ va5ea2a #(
+  .v8d305c(p1)
+ ) vf4805b (
+  .v55285a(w9),
+  .v9d91a6(w18)
+ );
+ v4ce749 #(
+  .v55d769(p0)
+ ) vbe75f2 (
+  .v64e413(w9),
+  .vd467bb(w11),
+  .v0f29c8(w17),
+  .vc4afa5(w18),
+  .v0b59cc(w23)
+ );
+ vab3848 v51bc2c (
+  .v18e78c(w2),
+  .v45bef2(w10),
+  .v2a0f14(w20)
+ );
+ ve645dd #(
+  .vc5c8ea(p6)
+ ) v99b5a6 (
+  .vb72db1(w10)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- count-4bits
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Máquina de contar, de 4 bits
+//---------------------------------------------------
+//---- Top entity
+module v438ded (
+ input v68780b,
+ input v143ae2,
+ input vb414d8,
+ output v078fce,
+ output v3525a9,
+ output vf2d070,
+ output vd82121
+);
+ wire w0;
+ wire w1;
+ wire w2;
+ wire w3;
+ wire w4;
+ wire w5;
+ wire w6;
+ wire w7;
+ wire w8;
+ wire w9;
+ assign v078fce = w1;
+ assign v3525a9 = w3;
+ assign w4 = v143ae2;
+ assign w5 = vb414d8;
+ assign vf2d070 = w6;
+ assign vd82121 = w7;
+ assign w8 = v68780b;
+ assign w9 = v68780b;
+ assign w1 = w0;
+ assign w2 = w0;
+ assign w2 = w1;
+ assign w9 = w8;
+ vb959c2 v551aec (
+  .vb4c770(w0),
+  .ve68648(w4),
+  .v3c6908(w5),
+  .v581b48(w8)
+ );
+ vc386a7 v838318 (
+  .ve78ab8(w0),
+  .v3487af(w6),
+  .vb1094d(w7),
+  .ved8395(w9)
+ );
+ v35f267 v719db6 (
+  .v0e28cb(w2),
+  .vcbab45(w3)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- Machine-state
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Biestable de almacenamiento del estado de la máquina
+//---------------------------------------------------
+//---- Top entity
+module vc386a7 (
+ input ved8395,
+ input ve78ab8,
+ output v3487af,
+ output vb1094d
+);
+ wire w0;
+ wire w1;
+ wire w2;
+ wire w3;
+ assign w0 = ved8395;
+ assign w1 = ve78ab8;
+ assign v3487af = w2;
+ assign vb1094d = w3;
+ vc386a7_v287d69 v287d69 (
+  .clk(w0),
+  .i(w1),
+  .up(w2),
+  .down(w3)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- Detector-flancos
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Detector de flancos de subida y bajada. Emite tic por las salidas correspondientes al detecta los flancos
+//---------------------------------------------------
+
+module vc386a7_v287d69 (
+ input clk,
+ input i,
+ output up,
+ output down
+);
+ reg q = 0;
+ 
+ always @(posedge clk)
+   q <= i;
+   
+ assign up = (~q & i);  
+ assign down = (q & ~i);  
+endmodule
+//---- Top entity
+module v816138 (
+ input v0e28cb,
+ input v3ca442,
+ output vcbab45
+);
+ wire w0;
+ wire w1;
+ wire w2;
+ assign w0 = v0e28cb;
+ assign w1 = v3ca442;
+ assign vcbab45 = w2;
+ v816138_vf4938a vf4938a (
+  .a(w0),
+  .b(w1),
+  .c(w2)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- OR
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Puerta OR
+//---------------------------------------------------
+
+module v816138_vf4938a (
+ input a,
+ input b,
+ output c
+);
+ //-- Puerta OR
+ 
+ //-- module and (input wire a, input wire b,
+ //--             output wire c);
+ 
+ assign c = a | b;
+ 
+ //-- endmodule
+endmodule
+//---- Top entity
+module va5ea2a #(
+ parameter v8d305c = 1
+) (
+ input [4:0] v9d91a6,
+ output [4:0] v55285a
+);
+ localparam p0 = v8d305c;
+ wire [0:4] w1;
+ wire [0:4] w2;
+ assign v55285a = w1;
+ assign w2 = v9d91a6;
+ va5ea2a_va0c26a #(
+  .k(p0)
+ ) va0c26a (
+  .s(w1),
+  .a(w2)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- sum-1op-5bits
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Sumador de un operando de 5 bits con una constante pasada como parámetro (No hay accarreo)
+//---------------------------------------------------
+
+module va5ea2a_va0c26a #(
+ parameter k = 0
+) (
+ input [4:0] a,
+ output [4:0] s
+);
+ assign s = a + k;
+endmodule
+//---- Top entity
+module v4ce749 #(
+ parameter v55d769 = 0
+) (
+ input vd467bb,
+ input v0f29c8,
+ input [4:0] v64e413,
+ input v0b59cc,
+ output [4:0] vc4afa5
+);
+ localparam p0 = v55d769;
+ wire [0:4] w1;
+ wire w2;
+ wire w3;
+ wire [0:4] w4;
+ wire w5;
+ assign vc4afa5 = w1;
+ assign w2 = vd467bb;
+ assign w3 = v0f29c8;
+ assign w4 = v64e413;
+ assign w5 = v0b59cc;
+ v4ce749_v00c404 #(
+  .INI(p0)
+ ) v00c404 (
+  .q(w1),
+  .clk(w2),
+  .rst(w3),
+  .d(w4),
+  .load(w5)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- Reg5bits
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Registro de 5 bits.
+//---------------------------------------------------
+
+module v4ce749_v00c404 #(
+ parameter INI = 0
+) (
+ input clk,
+ input rst,
+ input [4:0] d,
+ input load,
+ output [4:0] q
+);
+ localparam N = 5;
+ 
+ reg [N-1:0] q = INI;
+ 
+ always @(posedge clk)
+   if (rst)
+     q <= 0;
+   else
+     if (load)
+       q <= d;
+endmodule
+//---- Top entity
+module vab3848 (
+ input [4:0] v45bef2,
+ input [4:0] v2a0f14,
+ output v18e78c
+);
+ wire w0;
+ wire [0:4] w1;
+ wire [0:4] w2;
+ assign v18e78c = w0;
+ assign w1 = v45bef2;
+ assign w2 = v2a0f14;
+ vab3848_vd75681 vd75681 (
+  .eq(w0),
+  .a(w1),
+  .b(w2)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- Comparador de dos operandos
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Comparador de dos operandos de 5 bits
+//---------------------------------------------------
+
+module vab3848_vd75681 (
+ input [4:0] a,
+ input [4:0] b,
+ output eq
+);
+ assign eq = (a == b);
+endmodule
+//---- Top entity
+module ve645dd #(
+ parameter vc5c8ea = 0
+) (
+ output [4:0] vb72db1
+);
+ localparam p0 = vc5c8ea;
+ wire [0:4] w1;
+ assign vb72db1 = w1;
+ ve645dd_v465065 #(
+  .VALUE(p0)
+ ) v465065 (
+  .k(w1)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- Constante-5bits
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Valor genérico constante, de 5 bits. Su valor se introduce como parámetro. Por defecto vale 0
+//---------------------------------------------------
+
+module ve645dd_v465065 #(
+ parameter VALUE = 0
+) (
+ output [4:0] k
+);
+ assign k = VALUE;
+endmodule
+//---- Top entity
+module vc71757 #(
+ parameter v245bef = 22
+) (
+ input v0daa9e,
+ output v2efea4
+);
+ localparam p1 = v245bef;
+ wire w0;
+ wire w2;
+ assign w0 = v0daa9e;
+ assign v2efea4 = w2;
+ v435b29 #(
+  .v100e1b(p1)
+ ) v81886f (
+  .v0daa9e(w0),
+  .v2efea4(w2)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- Prescaler22
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- 22-bits prescaler
+//---------------------------------------------------
+//---- Top entity
+module v435b29 #(
+ parameter v100e1b = 22
+) (
+ input v0daa9e,
+ output v2efea4
+);
+ localparam p2 = v100e1b;
+ wire w0;
+ wire w1;
+ assign v2efea4 = w0;
+ assign w1 = v0daa9e;
+ v435b29_vac7386 #(
+  .N(p2)
+ ) vac7386 (
+  .clk_out(w0),
+  .clk_in(w1)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- PrescalerN
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- Parametric N-bits prescaler
+//---------------------------------------------------
+
+module v435b29_vac7386 #(
+ parameter N = 0
+) (
+ input clk_in,
+ output clk_out
+);
+ //-- Number of bits of the prescaler
+ //parameter N = 22;
+ 
+ //-- divisor register
+ reg [N-1:0] divcounter;
+ 
+ //-- N bit counter
+ always @(posedge clk_in)
+   divcounter <= divcounter + 1;
+ 
+ //-- Use the most significant bit as output
+ assign clk_out = divcounter[N-1];
+endmodule
+//---- Top entity
+module v023069 (
+ input vb0e2f3,
+ input [3:0] vc8e351,
+ output [3:0] v8448df,
+ output [4:0] v500b0c
+);
+ wire w0;
+ wire [0:3] w1;
+ wire [0:4] w2;
+ wire [0:4] w3;
+ wire [0:3] w4;
+ wire [0:3] w5;
+ assign w0 = vb0e2f3;
+ assign v8448df = w1;
+ assign v500b0c = w2;
+ assign w4 = vc8e351;
+ v023069_vde0592 vde0592 (
+  .Clk_i(w0),
+  .OScan(w1),
+  .Data(w3),
+  .InRow(w5)
+ );
+ vf5ee8e v18f529 (
+  .ve04a8b(w2),
+  .vf8afa2(w3)
+ );
+ v73122e va69b56 (
+  .vdeb67e(w4),
+  .va8f67e(w5)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- Led on
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- 
+//---------------------------------------------------
+
+module v023069_vde0592 (
+ input Clk_i,
+ input [3:0] InRow,
+ output [3:0] OScan,
+ output [4:0] Data
+);
+ 
+ reg [2:0] Clk_Count;
+ reg [3:0] rO_Scan;
+ reg [4:0] r1Dat,r2Dat,r3Dat,r4Dat,rData;
+ 
+ always @(posedge Clk_i) begin
+     Clk_Count = Clk_Count+1;
+     case(Clk_Count)
+         0:  OScan = 4'b0111;
+         1:  r1Dat = (InRow[3]==0) ? 5'h01 : 
+                     (InRow[2]==0) ? 5'h02 : 
+                     (InRow[1]==0) ? 5'h03 : 
+                     (InRow[0]==0) ? 5'h0a : 5'h1f ;
+         2:  OScan = 4'b1011;
+         3:  r2Dat = (InRow[3]==0) ? 5'h04 : 
+                     (InRow[2]==0) ? 5'h05 : 
+                     (InRow[1]==0) ? 5'h06 : 
+                     (InRow[0]==0) ? 5'h0b : 5'h1f ;
+         4:  OScan = 4'b1101;
+         5:  r3Dat = (InRow[3]==0) ? 5'h07 : 
+                     (InRow[2]==0) ? 5'h08 : 
+                     (InRow[1]==0) ? 5'h09 : 
+                     (InRow[0]==0) ? 5'h0c : 5'h1f ;
+         6:  OScan = 4'b1110;
+         7:  r4Dat = (InRow[3]==0) ? 5'h0e : 
+                     (InRow[2]==0) ? 5'h00 : 
+                     (InRow[1]==0) ? 5'h0f : 
+                     (InRow[0]==0) ? 5'h0d : 5'h1f ;
+         endcase
+     rData = (r1Dat != 5'h1f) ? r1Dat :
+             (r2Dat != 5'h1f) ? r2Dat :
+             (r3Dat != 5'h1f) ? r3Dat :
+             (r4Dat != 5'h1f) ? r4Dat : rData;
+     end
+     
+ assign  OScan = rO_Scan;
+ assign  Data  = rData;
+endmodule
+//---- Top entity
+module vf5ee8e (
+ input [4:0] vf8afa2,
+ output [4:0] ve04a8b
+);
+ wire [0:4] w0;
+ wire [0:4] w1;
+ assign w0 = vf8afa2;
+ assign ve04a8b = w1;
+ vf5ee8e_v668229 v668229 (
+  .i(w0),
+  .o(w1)
+ );
+endmodule
+
+//---------------------------------------------------
+//-- not-x5-verilog
+//-- - - - - - - - - - - - - - - - - - - - - - - - --
+//-- not-x5-verilog: 5-bits not gate. Verilog implementation
+//---------------------------------------------------
+
+module vf5ee8e_v668229 (
+ input [4:0] i,
+ output [4:0] o
+);
+ //-- Not Gate
+ assign o =  ~i;
 endmodule
 //---- Top entity
 module v73122e #(
@@ -450,22 +1866,118 @@ module v84f0a1_v9a2a06 (
  
 endmodule
 
-module main_vb78d31 (
- input [3:0] col,
- input Clk_i,
- output [3:0] row,
- output [7:0] Value,
- output txmit
+module main_v00cbaf (
+ input spi_c,
+ input [4:0] pad,
+ input xReset,
+ output [15:0] DO,
+ output Beat
 );
- 
- // reg [3:0] col;
- reg [3:0] row = 4'b1110;
- reg txmit = 1;
- 
- always @(posedge Clk_i) begin
-     row <= {row[2:0], row[3]};
-     Value <= {row, col};
-     txmit <= !txmit;
- end
- 
+  
+ reg [7:0]  rShowArray [0:7]; 
+ reg [15:0] rData16; 
+ reg [15:0] rCount16; 
+  
+  
+ initial begin 
+     rCount16 = 16'h0; 
+     rShowArray[7]  =8'b00011000; 
+     rShowArray[6]  =8'b00111100; 
+     rShowArray[5]  =8'b01100110; 
+     rShowArray[4]  =8'b01100110; 
+     rShowArray[3]  =8'b01100110; 
+     rShowArray[2]  =8'b01100110; 
+     rShowArray[1]  =8'b00111100; 
+     rShowArray[0]  =8'b00011000;
+     end 
+  
+  
+  
+ always @ (posedge spi_c) begin 
+     if (xReset) begin 
+         rCount16 = 16'h0; 
+         rShowArray[7]  = 8'b00011000; 
+         rShowArray[6]  = 8'b00111100; 
+         rShowArray[5]  = 8'b01100110; 
+         rShowArray[4]  = 8'b01100110; 
+         rShowArray[3]  = 8'b01100110; 
+         rShowArray[2]  = 8'b01100110; 
+         rShowArray[1]  = 8'b00111100; 
+         rShowArray[0]  = 8'b00011000;
+     end else begin
+         case(pad)
+             5'h00: begin
+                 rShowArray[7]  = 8'b00011000; 
+                 rShowArray[6]  = 8'b00111100; 
+                 rShowArray[5]  = 8'b01100110; 
+                 rShowArray[4]  = 8'b01100110; 
+                 rShowArray[3]  = 8'b01100110; 
+                 rShowArray[2]  = 8'b01100110; 
+                 rShowArray[1]  = 8'b00111100; 
+                 rShowArray[0]  = 8'b00011000;
+             end
+             5'h01: begin
+                 rShowArray[7]  = 8'b00011000; 
+                 rShowArray[6]  = 8'b00111000; 
+                 rShowArray[5]  = 8'b01111000; 
+                 rShowArray[4]  = 8'b01011000; 
+                 rShowArray[3]  = 8'b00011000; 
+                 rShowArray[2]  = 8'b00011000; 
+                 rShowArray[1]  = 8'b00111100; 
+                 rShowArray[0]  = 8'b00111100;
+             end
+             5'h02: begin
+                 rShowArray[7]  = 8'b00111000; 
+                 rShowArray[6]  = 8'b01000100; 
+                 rShowArray[5]  = 8'b00000100; 
+                 rShowArray[4]  = 8'b00011000; 
+                 rShowArray[3]  = 8'b00100000; 
+                 rShowArray[2]  = 8'b01000000; 
+                 rShowArray[1]  = 8'b01111110; 
+                 rShowArray[0]  = 8'b00000000;
+             end
+             5'h03: begin
+                 rShowArray[7]  = 8'b11111111; 
+                 rShowArray[6]  = 8'b11000011; 
+                 rShowArray[5]  = 8'b00000011; 
+                 rShowArray[3]  = 8'b00011111; 
+                 rShowArray[4]  = 8'b00011111; 
+                 rShowArray[2]  = 8'b01000011; 
+                 rShowArray[1]  = 8'b11000011; 
+                 rShowArray[0]  = 8'b11111111;
+             end
+             default: begin
+                 rShowArray[7]  = 8'b00011000; 
+                 rShowArray[6]  = 8'b00111100; 
+                 rShowArray[5]  = 8'b01100110; 
+                 rShowArray[4]  = 8'b01100110; 
+                 rShowArray[3]  = 8'b01100110; 
+                 rShowArray[2]  = 8'b01100110; 
+                 rShowArray[1]  = 8'b00111100; 
+                 rShowArray[0]  = 8'b00011000;
+             end
+         endcase
+         rCount16 = (rCount16>=100) ? 60 : rCount16+1; 
+         case(rCount16) 
+             50 : rData16 <= 16'h0b07; // b=Scan {0-7 Position} 
+             52 : rData16 <= 16'h0900; // 9=Mode {00=NoCode,ff=code} 
+             54 : rData16 <= 16'h0f00; // f=Test {0,1} 
+             56 : rData16 <= 16'h0a08; // a=Intensity = 8/15 
+             58 : rData16 <= 16'h0c01; // c=shutdown {0,1} 
+             
+             62 : rData16 <= 16'h0800 + rShowArray[0]; // 8=first Digit 
+             64 : rData16 <= 16'h0700 + rShowArray[1];  
+             66 : rData16 <= 16'h0600 + rShowArray[2];  
+             68 : rData16 <= 16'h0500 + rShowArray[3];  
+             70 : rData16 <= 16'h0400 + rShowArray[4];  
+             72 : rData16 <= 16'h0300 + rShowArray[5];  
+             74 : rData16 <= 16'h0200 + rShowArray[6];  
+             76 : rData16 <= 16'h0100 + rShowArray[7];  
+  
+         endcase
+     end
+ end 
+  
+ assign Beat = rCount16[4]; 
+ assign DO = rData16; 
 endmodule
